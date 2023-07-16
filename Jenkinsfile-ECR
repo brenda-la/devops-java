@@ -92,7 +92,8 @@ pipeline{
   stage('RUn docker Image '){
           when { expression {  params.action == 'create' } }
              steps{
-                sh 'docker run -p 8085:8085 -d javaapps '
+                sh 'docker stop app '
+                sh 'docker run -p 8085:8085 -d -name=app javaapps '
              }
     }
        //   stage('Docker Image Cleanup : ECR '){
