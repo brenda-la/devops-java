@@ -92,7 +92,7 @@ pipeline{
   stage('RUn docker Image '){
           when { expression {  params.action == 'create' } }
              steps{
-                sh 'docker stop app '
+                sh 'docker stop app && docker rm app -f '
                 sh 'docker run -p 8085:8085 -d -name=app javaapps '
              }
     }
